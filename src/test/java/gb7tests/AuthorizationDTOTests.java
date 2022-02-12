@@ -9,7 +9,6 @@ public class AuthorizationDTOTests {
         MyAuthorizationDTO myAuthorizationDTO = new MyAuthorizationDTO();
         myAuthorizationDTO.setLogin("admin");
         myAuthorizationDTO.setPassword("password123");
-
         String token = given().log().all().contentType("application/json")
                 .when().body(myAuthorizationDTO)
                 .request("POST", "https://restful-booker.herokuapp.com/auth")
@@ -24,7 +23,6 @@ public class AuthorizationDTOTests {
         MyAuthorizationDTO myAuthorizationDTO = new MyAuthorizationDTO();
         myAuthorizationDTO.setLogin("");
         myAuthorizationDTO.setPassword("password123");
-
         String token = given().log().all().contentType("application/json")
                 .when().body(myAuthorizationDTO)
                 .request("POST", "https://restful-booker.herokuapp.com/auth")
