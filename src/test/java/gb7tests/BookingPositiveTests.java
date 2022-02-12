@@ -1,13 +1,10 @@
 package gb7tests;
-
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
-
 public class BookingPositiveTests {
     @Test
     void bookingPositiveTest() {
-
         given()
                 .header("Content-Type", "application/json")
                 .body("{\n" +
@@ -33,7 +30,6 @@ public class BookingPositiveTests {
                 .body("booking.bookingdates.checkin", CoreMatchers.equalTo("2022-01-25"))
                 .body("booking.firstname", CoreMatchers.equalTo("Альберт"));
     }
-
     @Test
     void getBookingTest() {
         given()
@@ -49,7 +45,6 @@ public class BookingPositiveTests {
                 .then()
                 .statusCode(200);
     }
-
     @Test
     void bookingNegative7Test() {
         given()

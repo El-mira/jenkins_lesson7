@@ -1,8 +1,6 @@
 package gb7tests;
-
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
-
 public class BookingNegativeTests extends BaseTest{
     @Test
     void bookingNegative1Test() {
@@ -22,7 +20,6 @@ public class BookingNegativeTests extends BaseTest{
                 .post("booking")
                 .prettyPeek();
     }
-
     @Test
     void bookingNegative2Test() {
         given()
@@ -41,7 +38,6 @@ public class BookingNegativeTests extends BaseTest{
                 .post("booking")
                 .prettyPeek();
     }
-
     @Test
     void bookingNegative3Test() {
         given()
@@ -60,7 +56,6 @@ public class BookingNegativeTests extends BaseTest{
                 .post("booking")
                 .prettyPeek();
     }
-
     @Test
     void bookingNegative4Test() {
         given()
@@ -79,7 +74,6 @@ public class BookingNegativeTests extends BaseTest{
                 .post("booking")
                 .prettyPeek();
     }
-
     @Test
     void bookingNegative5Test() {
         given()
@@ -98,7 +92,6 @@ public class BookingNegativeTests extends BaseTest{
                 .post("booking")
                 .prettyPeek();
     }
-
     @Test
     void bookingNegative6Test() {
         given()

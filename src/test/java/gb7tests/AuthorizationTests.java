@@ -1,5 +1,4 @@
 package gb7tests;
-
 import gb7.MyAuthorizationDTO;
 import io.restassured.RestAssured;
 import org.hamcrest.CoreMatchers;
@@ -9,7 +8,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import static io.restassured.RestAssured.given;
-
 public class AuthorizationTests {
     static Properties properties;
     static String host1;
@@ -18,7 +16,6 @@ public class AuthorizationTests {
         properties = new Properties();
         properties.load(new FileInputStream("src/test/application.properties"));
         host1 = properties.getProperty("host1","https://restful-booker.herokuapp.com/");
-
         RestAssured.baseURI = host1;
     }
     @Test
@@ -26,7 +23,6 @@ public class AuthorizationTests {
         MyAuthorizationDTO myAuthorizationDTO = new MyAuthorizationDTO();
         myAuthorizationDTO.setLogin("admin");
         myAuthorizationDTO.setPassword("password123");
-
         String token = given().log().all().contentType("application/json")
                 .when().body(myAuthorizationDTO)
                 .post("auth")
@@ -36,14 +32,11 @@ public class AuthorizationTests {
                 .jsonPath()
                 .getString("token");
     }
-
     @Test
     void AuthorizationNegative1Test() {
-
         MyAuthorizationDTO myAuthorizationDTO = new MyAuthorizationDTO();
         myAuthorizationDTO.setLogin("");
         myAuthorizationDTO.setPassword("password123");
-
         given()
                 .header("Content-Type", "application/json")
                 .body(myAuthorizationDTO)
@@ -56,13 +49,11 @@ public class AuthorizationTests {
                 .statusCode(200)
                 .body("reason", CoreMatchers.equalTo("Bad credentials"));
     }
-
     @Test
     void AuthorizationNegative2Test() {
         MyAuthorizationDTO myAuthorizationDTO = new MyAuthorizationDTO();
         myAuthorizationDTO.setLogin("admin");
         myAuthorizationDTO.setPassword("");
-
         given()
                 .header("Content-Type", "application/json")
                 .body(myAuthorizationDTO)
@@ -75,7 +66,6 @@ public class AuthorizationTests {
                 .statusCode(200)
                 .body("reason", CoreMatchers.equalTo("Bad credentials"));
     }
-
     @Test
     void AuthorizationNegative3Test() {
         given()
@@ -93,7 +83,6 @@ public class AuthorizationTests {
                 .statusCode(400)
                 .body(CoreMatchers.equalTo("Bad Request"));
     }
-
     @Test
     void AuthorizationNegative4Test() {
         given()
@@ -111,7 +100,6 @@ public class AuthorizationTests {
                 .statusCode(200)
                 .body("reason", CoreMatchers.equalTo("Bad credentials"));
     }
-
     @Test
     void AuthorizationNegative5Test() {
         given()
@@ -129,11 +117,8 @@ public class AuthorizationTests {
                 .statusCode(200)
                 .body("reason", CoreMatchers.equalTo("Bad credentials"));
     }
-
     @Test
-
     void AuthorizationNegative9Test() {
-
         MyAuthorizationDTO myAuthorizationDTO = new MyAuthorizationDTO();
         myAuthorizationDTO.setLogin("");
         myAuthorizationDTO.setPassword("password123");

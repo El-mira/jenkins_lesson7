@@ -1,10 +1,8 @@
 package gb7tests;
-
 import gb7.MyAuthorizationDTO;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
-
 public class AuthorizationDTOTests {
     @Test
     void authpositivetest() {
@@ -21,7 +19,6 @@ public class AuthorizationDTOTests {
                 .jsonPath()
                 .getString("token");
     }
-
     @Test
     void authnegative1test() {
         MyAuthorizationDTO myAuthorizationDTO = new MyAuthorizationDTO();
