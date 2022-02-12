@@ -8,12 +8,9 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeAll;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-
-import static org.hamcrest.Matchers.lessThan;
 
 public class BaseTest {
     static Properties properties;
@@ -26,7 +23,6 @@ public class BaseTest {
     static void beforeAll() throws IOException {
 
         negativeResponseSpecification = new ResponseSpecBuilder()
-                .expectResponseTime(lessThan(15500l))
                 .expectStatusCode(400)
                 .expectStatusLine("HTTP/1.1 400 Bad Request")
                 .expectBody(CoreMatchers.equalTo("Bad Request"))
